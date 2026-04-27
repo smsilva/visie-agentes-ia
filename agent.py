@@ -1,10 +1,16 @@
+import os
 from agno.agent import Agent
 from agno.models.openai import OpenAIChat
 
+instructions_file_name = "instructions.md"
+
+with open(instructions_file_name) as instructions_file:
+    instructions_lines = instructions_file.read()
+
 agent = Agent(
-    model=OpenAIChat(id="gpt41"),
-    instructions="You are a helpful assistant that provides information about the weather. Answer questions about current weather conditions, forecasts, and general weather-related inquiries.",
+    model="openai:gpt-4o-mini",
+    instructions=instructions_lines,
     markdown=True,
 )
 
-agent.print_response("What is the current weather in New York City?")
+agent.print_response("Como divido uma janela no tmux?")
