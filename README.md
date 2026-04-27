@@ -1,0 +1,5 @@
+# Notas
+
+- Agno
+- Langchain
+- Pydantic
