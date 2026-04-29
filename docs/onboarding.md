@@ -1,0 +1,33 @@
+# onboarding
+
+- Novos integrantes do claud.ao devem fazer parte do grupo cloud
+- A Organização no GitHiub é https://github.com/CI-T-HyperX
+- Os repositórios principais são:
+  - https://github.com/CI-T-HyperX/flow-gitops | dispara workflows de CI/CD para deploy de Stacks terraform
+  - https://github.com/CI-T-HyperX/flow-actions | ações customizadas para os workflows de CI/CD
+  - https://github.com/CI-T-HyperX/flowp-chart | chart helm para deploy de umbrella chart de aplicações
+  - https://bitbucket.org/ciandt_it/ciandtspike-assets-flow | repositório de assets do flow, onde ficam os manifests de deploy das aplicações, templates de pipeline e outros arquivos relacionados ao fluxo de trabalho do cloud.ao
+  - https://bitbucket.org/ciandt_it/ciandtspike-assets-spikedev-deprecated | repositório de assets do spikedev, onde ficam os manifests de deploy das aplicações, templates de pipeline e outros arquivos relacionados ao fluxo de trabalho do spikedev. Repositório em processo de descontinuação, migrando para o ciandtspike-assets-flow
+  - https://bitbucket.org/ciandt_it/ciandtspike-auth-service-deprecated | repositório do serviço de autenticação do cloud.ao, responsável por autenticar os usuários e gerar tokens de acesso para as aplicações. Repositório em processo de descontinuação, migrando para o ciandtspike-assets-flow
+  - https://bitbucket.org/ciandt_it/ciandtspike-backstage | repositório do backstage do cloud.ao, onde ficam os manifests de deploy do backstage e dos plugins utilizados no backstage. Repositório em processo de descontinuação, migrando para o ciandtspike-assets-flow
+  - https://bitbucket.org/ciandt_it/ciandtspike-backstage-flow-manifests
+  - https://bitbucket.org/ciandt_it/ciandtspike-buildpacks-builder
+  - https://bitbucket.org/ciandt_it/ciandtspike-caramelo-dev-gitops
+  - https://bitbucket.org/ciandt_it/ciandtspike-caramelo-gitops
+  - https://bitbucket.org/ciandt_it/ciandtspike-connectivity-iac
+  - https://bitbucket.org/ciandt_it/ciandtspike-container-images
+  - https://bitbucket.org/ciandt_it/ciandtspike-core-caramelo-iac-deprecated
+  - https://bitbucket.org/ciandt_it/ciandtspike-core-caramelo-terragrunt-deprecated
+  - https://bitbucket.org/ciandt_it/ciandtspike-crossplane-provider-bitbucket-cloud
+  - https://bitbucket.org/ciandt_it/ciandtspike-general-assets
+  - https://bitbucket.org/ciandt_it/ciandtspike-iac
+  - https://bitbucket.org/ciandt_it/ciandtspike-idp-planning
+  - https://bitbucket.org/ciandt_it/ciandtspike-keycloak
+  - https://bitbucket.org/ciandt_it/ciandtspike-keycloak-lib-ciandt-datax-event-listener
+  - https://bitbucket.org/ciandt_it/ciandtspike-manager-iac
+  - https://bitbucket.org/ciandt_it/ciandtspike-observability
+  - https://bitbucket.org/ciandt_it/ciandtspike-opa
+  - https://bitbucket.org/ciandt_it/ciandtspike-spikebuilder
+  - https://bitbucket.org/ciandt_it/ciandtspike-spike-composer
+  - https://bitbucket.org/ciandt_it/ciandtspike-tekton
+  - https://bitbucket.org/ciandt_it/ciandtspike-xrd-domains

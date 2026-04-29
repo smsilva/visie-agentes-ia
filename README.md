@@ -39,3 +39,9 @@ agno.memory.MemoryManager
 Dúvida sobre testes que não fazem parte da mudança.
 
 Knowledge Base e Skills para os exercícios
+
+- Dia 3
+
+Exercício
+
+- Criar um agente que responda perguntas sobre o fluxo de trabalho no cloud.ao
