@@ -1,0 +1,10 @@
+[project]
+name = "visie-agentes-ia"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "agno>=2.6.4",
+    "openai>=2.33.0",
+]
