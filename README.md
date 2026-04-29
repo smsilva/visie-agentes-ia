@@ -45,3 +45,9 @@ Knowledge Base e Skills para os exercícios
 Exercício
 
 - Criar um agente que responda perguntas sobre o fluxo de trabalho no cloud.ao
+
+- Qual comando mostra o caminho do arquivo?
+
+dir(OpenAIChat)
+
+help(OpenAIChat)
