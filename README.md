@@ -51,3 +51,32 @@ Exercício
 dir(OpenAIChat)
 
 help(OpenAIChat)
+
+# Dia 4
+
+- Python cli: 
+
+.venv/bin/python
+import agno
+agno
+<module 'agno' from '/home/silvios/git/visie-agentes-ia/.venv/lib/python3.14/site-packages/agno/__init__.py'>
+
+Python Click
+
+Pydantic
+
+curiosidade sobre importacao de classe e poder renomear
+
+comentar sobre o play
+
+Pensamentos
+- modelo agarrado com jira
+- tentar forçar o uso de papeis usado atualmente
+- mocks para agentes
+- salvar cache dos passos de um workflow que envolve ia
+
+- agente de ia precisa ter ferramentas para:
+  - ler arquivos
+  - ler diretoiros
+  - escrever arquivos
+  - e executar código (os subprocess executando o que ele acabou de escrever e ver se deu erro ou não)
