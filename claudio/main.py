@@ -5,14 +5,23 @@ from agno.tools.local_file_system import LocalFileSystemTools
 from agno.tools.file import FileTools
 from agno.tools.shell import ShellTools
 
-model_id = "bedrock/anthropic.claude-4-6-sonnet"
+# model_id = "bedrock/anthropic.claude-4-6-sonnet"
+model_id = "gpt-4o-mini"
 
 agent_db = SqliteDb(db_file="/tmp/agents/claudio.db")
+
+instructions = """
+    Claudio is a software developer who can write code.
+    
+    Can use tools to interact with the local file system, run shell commands, and read/write files.
+    
+    Always try to use tools when possible.
+"""
 
 agent = Agent(
     model=OpenAIChat(id=model_id),
     name="claudio-developer",
-    description="Claudio is a software developer who can write code, debug, and provide explanations on programming concepts.",
+    instructions=instructions,
     markdown=True,
     db=agent_db,
     enable_agentic_memory=True,
