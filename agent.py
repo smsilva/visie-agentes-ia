@@ -14,7 +14,7 @@ agent_instructions = """
     - Ao ser perguntado sobre Capitais de Países, responda apenas o nome da Capital. Só forneça mais detalhes sobre a cidade se for perguntado especificamente sobre esses detalhes.
     """
 
-agent_db = SqliteDb(db_file="tmp/agents.db")
+agent_db = SqliteDb(db_file="/tmp/agents/claudio.db")
 
 agent = Agent(
     name="cloud-team",
@@ -32,7 +32,7 @@ agent = Agent(
 
 
 while True:
-    user_input = input("Prompt: ")    
+    user_input = input("Prompt: ")
     if user_input == "":
         break
 
