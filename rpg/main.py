@@ -1,9 +1,63 @@
+import time
+import functools
 from agno.agent import Agent
 from agno.models.openai import OpenAIChat
 from enum import Enum
 from pydantic import BaseModel
-from typing import List
+from typing import List, Callable
 from rich import print
+from opentelemetry import metrics
+from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
+from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
+from opentelemetry.sdk.resources import Resource
+
+_resource = Resource.create(
+    {
+        "service.name": "rpg-agent",
+        "user": "rpg-agent-user@ciandt.com",
+        "team": "cloud",
+        "tenant": "flowteam"
+    }
+)
+_exporter = OTLPMetricExporter()
+_reader = PeriodicExportingMetricReader(_exporter, export_interval_millis=5000)
+_provider = MeterProvider(resource=_resource, metric_readers=[_reader])
+metrics.set_meter_provider(_provider)
+
+_meter = metrics.get_meter("rpg-agent")
+_characters_counter = _meter.create_counter(
+    "rpg.characters.created",
+    description="Número de personagens criados",
+)
+_teams_counter = _meter.create_counter(
+    "rpg.teams.created",
+    description="Número de times criados",
+)
+_character_duration = _meter.create_histogram(
+    "rpg.character.generation.duration",
+    unit="s",
+    description="Tempo de geração de personagem",
+)
+_team_duration = _meter.create_histogram(
+    "rpg.team.generation.duration",
+    unit="s",
+    description="Tempo de geração de time",
+)
+
+
+def record_metrics(counter, histogram, label_fn: Callable):
+    def decorator(fn):
+        @functools.wraps(fn)
+        def wrapper(*args, **kwargs):
+            t0 = time.perf_counter()
+            result = fn(*args, **kwargs)
+            labels = label_fn(*args, result=result, **kwargs)
+            histogram.record(time.perf_counter() - t0, labels)
+            counter.add(1, labels)
+            return result
+        return wrapper
+    return decorator
 
 
 class CharacterLevel(Enum):
@@ -55,6 +109,11 @@ character_generator = Agent(
 )
 
 
+@record_metrics(
+    _characters_counter,
+    _character_duration,
+    lambda race, level, result=None: {"race": race.value, "level": level.value},
+)
 def create_character(race: Race, level: CharacterLevel) -> str:
     """
     Gera um personagem de RPG com a raça e nível especificados.
@@ -76,6 +135,11 @@ team_generator = Agent(
     debug_mode=True,
 )
 
+@record_metrics(
+    _teams_counter,
+    _team_duration,
+    lambda instruction, result=None: {"size": str(len(result.characters))} if result else {},
+)
 def create_team(instruction: str) -> Team:
     """
     Gera um time de RPG com base na instrução fornecida.
@@ -89,3 +153,4 @@ if __name__ == "__main__":
     vilains = create_team("monte um time com 2 vilões")
     print(heroes.model_dump_json(indent=2))
     print(vilains.model_dump_json(indent=2))
+    _provider.force_flush()
